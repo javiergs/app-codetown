@@ -1,7 +1,6 @@
-package com.javiergs.codetown;
+package com.javiergs.codetown.ui;
 
 import com.javiergs.codetown.data.JgsFileData;
-import com.mxgraph.layout.mxCircleLayout;
 import com.mxgraph.layout.mxFastOrganicLayout;
 import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.util.mxConstants;
@@ -10,10 +9,8 @@ import com.mxgraph.view.mxGraph;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 public class JgsGitViewer extends JFrame {
 
@@ -40,7 +37,16 @@ public class JgsGitViewer extends JFrame {
     // create nodes and edges ------------------------------------------------------------------------------------------
 
     // get highest LOC
-    int maxLOC = jgsFileData.stream().mapToInt(JgsFileData::getLinesOfCode).max().orElse(0);
+    if (jgsFileData == null || jgsFileData.isEmpty()) {
+      return graph;
+    }
+    int maxLOC = 1;
+    try {
+      maxLOC = jgsFileData.stream().mapToInt(JgsFileData::getLinesOfCode).max().orElse(0);
+    } catch (Exception e) {
+      Logger.getLogger(JgsGitViewer.class.getName()).warning("error getting max LOC " + e);
+    }
+
     // total classes
 
     // get width and height
@@ -51,7 +57,9 @@ public class JgsGitViewer extends JFrame {
     Map<String, Object> mapNodes = new HashMap<String, Object>();
     try {
       for (JgsFileData node : jgsFileData) {
-
+        if (node == null) {
+          continue;
+        }
         int sigmoid = 1 / (1 + (int) Math.exp(-node.getLinesOfCode()/maxLOC));
         sigmoid = 30*sigmoid + 30;
         if (!node.hasMain()) {
@@ -62,6 +70,9 @@ public class JgsGitViewer extends JFrame {
       }
 
       for (JgsFileData node : jgsFileData) {
+        if (node == null) {
+          continue;
+        }
         if (node.getParent() != null && !node.getParent().isEmpty() && mapNodes.containsKey(node.getParent())) {
           graph.insertEdge(parent, null, "", mapNodes.get(node.getName()), mapNodes.get(node.getParent()), "endArrow=block");
         }

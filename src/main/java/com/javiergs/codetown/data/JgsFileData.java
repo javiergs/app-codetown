@@ -3,6 +3,14 @@ package com.javiergs.codetown.data;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class is responsible for storing the data of a Java file
+ * It contains the name of the class, the parent class, the interfaces, the attributes, the methods,
+ * the associations and the lines of code
+ *
+ * @version 1.0
+ * @autor javierGS
+ */
 public class JgsFileData {
 
   private final ArrayList<String> interfaces;

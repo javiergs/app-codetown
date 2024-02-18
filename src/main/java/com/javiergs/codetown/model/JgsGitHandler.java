@@ -1,4 +1,4 @@
-package com.javiergs.codetown.data;
+package com.javiergs.codetown.model;
 
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -8,7 +8,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- *  This class is responsible for downloading a Git repository
+ * This class is responsible for downloading a Git repository
+ *
+ * @author javierGS
+ * @version 1.0
  */
 public class JgsGitHandler {
 
@@ -24,7 +27,7 @@ public class JgsGitHandler {
     }
     File destinationDirectory = new File(this.folder);
     if (destinationDirectory.exists()) {
-      deleteRecursive (destinationDirectory);
+      deleteRecursive(destinationDirectory);
     }
     try {
       Git.cloneRepository()
@@ -56,23 +59,21 @@ public class JgsGitHandler {
     if (!(path.exists() && path.isDirectory() && path.canRead() && path.canRead())) {
       throw new IOException("The repository does not exist or is not a directory");
     }
-    for (File item : path.listFiles()) {
-      if (item.isDirectory()) {
-        files.addAll(getFilesRecursive(item));
-      } else {
-        if (item.isFile() && item.getName().endsWith(".java") && !item.getName().startsWith(".")) {
-          files.add(item);
+    if (path.listFiles() != null)
+      for (File item : path.listFiles())
+        if (item.isDirectory()) {
+          files.addAll(getFilesRecursive(item));
+        } else {
+          if (item.isFile() && item.getName().endsWith(".java") && !item.getName().startsWith(".")) {
+            files.add(item);
+          }
         }
-      }
-    }
     return files;
   }
 
-  public  ArrayList<File> getFiles() throws IOException {
-    ArrayList<File> files = new ArrayList<>();
+  public ArrayList<File> getFiles() throws IOException {
     download();
-    files = getFilesRecursive(new File(folder));
-    return files;
+    return getFilesRecursive(new File(folder));
   }
 
   public JgsGitHandler setURI(String uri) {

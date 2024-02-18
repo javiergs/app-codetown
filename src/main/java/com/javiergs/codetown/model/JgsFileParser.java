@@ -1,4 +1,4 @@
-package com.javiergs.codetown.data;
+package com.javiergs.codetown.model;
 
 import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.CompilationUnit;
@@ -8,6 +8,7 @@ import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.expr.MethodCallExpr;
 import com.github.javaparser.ast.type.ClassOrInterfaceType;
 import com.javiergs.codetown.Main;
+import com.javiergs.codetown.data.JgsFileData;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;

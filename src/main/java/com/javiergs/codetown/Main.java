@@ -1,8 +1,9 @@
 package com.javiergs.codetown;
 
-import com.javiergs.codetown.data.JgsGitHandler;
+import com.javiergs.codetown.model.JgsGitHandler;
 import com.javiergs.codetown.data.JgsFileData;
-import com.javiergs.codetown.data.JgsFileParser;
+import com.javiergs.codetown.model.JgsFileParser;
+import com.javiergs.codetown.ui.JgsGitViewer;
 import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 
 public class Main {
 
-  public static final String REPOSITORY = "Temporal";
+  public static final String REPOSITORY = "librealsense";
   public static final String USERID = "javiergs";
   public static final String FOLDER = "/tmp/" + REPOSITORY + "/";
 
@@ -20,8 +21,9 @@ public class Main {
 
     // download
     JgsGitHandler jgsGitHandler = new JgsGitHandler()
-      .setURI("https://github.com/" + USERID + "/" + REPOSITORY + ".git")
-      .setBranch("main")
+      //.setURI("https://github.com/" + USERID + "/" + REPOSITORY + ".git")
+      .setURI("https://github.com/IntelRealSense/librealsense.git")
+      .setBranch("master")
       .setFolder(FOLDER);
     ArrayList<File> files = null;
     try {
