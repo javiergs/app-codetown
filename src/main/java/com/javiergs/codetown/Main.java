@@ -2,7 +2,7 @@ package com.javiergs.codetown;
 
 import com.javiergs.codetown.data.JgsGitHandler;
 import com.javiergs.codetown.data.JgsFileData;
-import com.javiergs.codetown.data.JgsParser;
+import com.javiergs.codetown.data.JgsFileParser;
 import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
@@ -35,7 +35,7 @@ public class Main {
     ArrayList<JgsFileData> classes = new ArrayList<>();
     for (File file : files) {
       try {
-        classes.add(JgsParser.parseJavaFile(file));
+        classes.add(JgsFileParser.parseJavaFile(file));
       } catch (Exception e) {
         LoggerFactory.getLogger(Main.class).error("error parsing file " + file);
       }

@@ -14,7 +14,7 @@ import java.io.File;
 import java.util.Iterator;
 import java.util.Optional;
 
-public class JgsParser {
+public class JgsFileParser {
 
   public static JgsFileData parseJavaFile(File file)  {
 

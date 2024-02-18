@@ -5,12 +5,12 @@ import java.util.List;
 
 public class JgsFileData {
 
-  private String name;
-  private String parent;
   private final ArrayList<String> interfaces;
   private final ArrayList<String> attributes;
   private final ArrayList<String> methods;
   private final ArrayList<String> associations;
+  private String name;
+  private String parent;
   private int linesOfCode;
 
   public JgsFileData() {
@@ -96,4 +96,5 @@ public class JgsFileData {
     if (s == null) return;
     associations.add(s);
   }
+
 }
