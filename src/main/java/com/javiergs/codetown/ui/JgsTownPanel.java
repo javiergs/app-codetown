@@ -7,23 +7,27 @@ import com.mxgraph.util.mxConstants;
 import com.mxgraph.view.mxGraph;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
-public class JgsGitViewer extends JFrame {
+/**
+ * Panel to show a mxGraph from files and their associations
+ *
+ * @version 1.0
+ * @author javierGS
+ */
+public class JgsTownPanel extends JPanel {
 
-  private static final String GRAPH = "graph";
-  private static final String NODES = "graph.nodes";
-  private static final String EDGES = "graph.edges";
-
-  public JgsGitViewer(ArrayList<JgsFileData> files) {
-    super("JGS Lab | GitHub Repository Viewer");
+  public JgsTownPanel(ArrayList<JgsFileData> files) {
+    super();
     mxGraph graph = createGraph(files);
     mxGraphComponent graphPanel = new mxGraphComponent(graph);
     graphPanel.setGridVisible(true);
     graphPanel.setConnectable(false);
+    setLayout(new GridLayout(1, 1));
     add(graphPanel);
   }
 
@@ -44,7 +48,7 @@ public class JgsGitViewer extends JFrame {
     try {
       maxLOC = jgsFileData.stream().mapToInt(JgsFileData::getLinesOfCode).max().orElse(0);
     } catch (Exception e) {
-      Logger.getLogger(JgsGitViewer.class.getName()).warning("error getting max LOC " + e);
+      Logger.getLogger(JgsTownPanel.class.getName()).warning("error getting max LOC " + e);
     }
 
     // total classes

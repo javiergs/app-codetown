@@ -15,6 +15,12 @@ import java.io.File;
 import java.util.Iterator;
 import java.util.Optional;
 
+/**
+ * This class is responsible for parsing a Java file and extracting the relevant information
+ * It uses the JavaParser library to parse the file and extract the information
+ * @version 1.0
+ * @autor javierGS
+ */
 public class JgsFileParser {
 
   public static JgsFileData parseJavaFile(File file)  {
@@ -68,7 +74,6 @@ public class JgsFileParser {
       method.findAll(MethodCallExpr.class).forEach(mce -> {
         if (mce.getScope().isPresent() && Character.isUpperCase(mce.getScope().get().toString().charAt(0))) {
             jgsFileData.addAssociation(mce.getScope().get().toString());
-          //System.out.println("Class for static method call: " + mce.getScope().get().toString());
         }
       });
     });
