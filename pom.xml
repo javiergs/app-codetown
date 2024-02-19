@@ -44,6 +44,31 @@
             <artifactId>javaparser-symbol-solver-core</artifactId>
             <version>LATEST</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.processing/core -->
+        <dependency>
+            <groupId>org.processing</groupId>
+            <artifactId>core</artifactId>
+            <version>3.3.7</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/lib/core.jar</systemPath>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jogamp.gluegen/gluegen-rt -->
+        <dependency>
+            <groupId>org.jogamp.gluegen</groupId>
+            <artifactId>gluegen-rt</artifactId>
+            <version>2.3.2</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/lib/gluegen-rt.jar</systemPath>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jogamp.jogl/jogl-all -->
+        <dependency>
+            <groupId>org.jogamp.jogl</groupId>
+            <artifactId>jogl-all</artifactId>
+            <version>2.3.2</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/lib/jogl-all.jar</systemPath>
+        </dependency>
+
     </dependencies>
 
 </project>
