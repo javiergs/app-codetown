@@ -7,7 +7,7 @@ public class Main extends PApplet {
 
   private int x = 200;
   private int y = 200;
-  private int radius = 25;
+  private final int radius = 25;
   private int vx = 1;
   private int vy = 2;
   private int c = color(255);
@@ -39,8 +39,7 @@ public class Main extends PApplet {
   }
 
   public static void main(String[] args) {
-    PApplet.main("com.javiergs.spiderworld.pro");
+    PApplet.main("com.javiergs.spiderworld.Main");
   }
 
 }
-

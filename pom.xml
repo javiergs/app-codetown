@@ -6,13 +6,15 @@
 
     <groupId>com.javiergs</groupId>
     <artifactId>TeachingLibrary</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>20</maven.compiler.source>
         <maven.compiler.target>20</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
         <dependency>
@@ -68,7 +70,6 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/src/main/lib/jogl-all.jar</systemPath>
         </dependency>
-
     </dependencies>
 
 </project>
