@@ -7,7 +7,41 @@
     <groupId>com.javiergs</groupId>
     <artifactId>TeachingLibrary</artifactId>
     <version>1.0</version>
+    <name>${project.groupId}:${project.artifactId}</name>
+    <description>A collection of classes for teaching fundamentals in software construction.</description>
+    <url>http://www.javiergs.info/java/teachinglibrary</url>
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name>Javier Gonzalez-Sanchez</name>
+            <email>javiergs@acm.org</email>
+            <organization>CSU</organization>
+        </developer>
+    </developers>
+
     <packaging>jar</packaging>
+
+    <scm>
+        <connection>scm:git:git://github.com/javiergs/TeachingLibrary.git</connection>
+        <developerConnection>scm:git:ssh://github.com:javiergs/TeachingLibrary.git</developerConnection>
+        <url>https://github.com/javiergs/TeachingLibrary/tree/main</url>
+    </scm>
+
+    <repositories>
+        <repository>
+            <id>processing-for-maven</id>
+            <url>https://processing-for-maven.netlify.app</url>
+        </repository>
+        <repository>
+            <id>localrepository</id>
+            <url>file://${project.basedir}/lib</url>
+        </repository>
+    </repositories>
 
     <properties>
         <maven.compiler.source>20</maven.compiler.source>
@@ -44,32 +78,82 @@
         <dependency>
             <groupId>com.github.javaparser</groupId>
             <artifactId>javaparser-symbol-solver-core</artifactId>
-            <version>LATEST</version>
+            <version>3.25.8</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.processing/core -->
+
+        <!-- own repository for org.processing -->
         <dependency>
             <groupId>org.processing</groupId>
             <artifactId>core</artifactId>
-            <version>3.3.7</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/lib/core.jar</systemPath>
+            <version>4.0b8</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.jogamp.gluegen/gluegen-rt -->
-        <dependency>
-            <groupId>org.jogamp.gluegen</groupId>
-            <artifactId>gluegen-rt</artifactId>
-            <version>2.3.2</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/lib/gluegen-rt.jar</systemPath>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.jogamp.jogl/jogl-all -->
         <dependency>
             <groupId>org.jogamp.jogl</groupId>
-            <artifactId>jogl-all</artifactId>
+            <artifactId>jogl-all-main</artifactId>
             <version>2.3.2</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/lib/jogl-all.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>org.jogamp.gluegen</groupId>
+            <artifactId>gluegen-rt-main</artifactId>
+            <version>2.3.2</version>
+        </dependency>
+
     </dependencies>
+
+    <build>
+        <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>3.3.0</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.9.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.3.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                    <tokenAuth>true</tokenAuth>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

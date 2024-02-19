@@ -9,7 +9,7 @@ import java.util.List;
  * the associations and the lines of code
  *
  * @version 1.0
- * @autor javierGS
+ * @author javiergs or javierGS
  */
 public class JgsFileData {
 

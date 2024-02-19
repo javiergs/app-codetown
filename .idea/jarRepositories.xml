@@ -21,5 +21,20 @@
       <option name="name" value="JBoss Community repository" />
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="localrepository" />
+      <option name="name" value="localrepository" />
+      <option name="url" value="file://$PROJECT_DIR$/src/main/lib" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="processing-for-maven" />
+      <option name="name" value="processing-for-maven" />
+      <option name="url" value="https://processing-for-maven.netlify.app" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="localrepository" />
+      <option name="name" value="localrepository" />
+      <option name="url" value="file://$PROJECT_DIR$/lib" />
+    </remote-repository>
   </component>
 </project>

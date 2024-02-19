@@ -19,7 +19,7 @@ import java.util.Optional;
  * This class is responsible for parsing a Java file and extracting the relevant information
  * It uses the JavaParser library to parse the file and extract the information
  * @version 1.0
- * @autor javierGS
+ * @author javiergs
  */
 public class JgsFileParser {
 
