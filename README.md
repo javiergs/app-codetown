@@ -30,5 +30,3 @@ The current implementation expects a Git clone URL ending in `.git` and uses the
 - [`model/`](src/main/java/com/javiergs/codetown/model/) — Git cloning and Java source parsing.
 - [`data/`](src/main/java/com/javiergs/codetown/data/) — Graph and source data models.
 - [`ui/`](src/main/java/com/javiergs/codetown/ui/) — Visualization panel.
-
-The independent Processing animation example has moved to [`edu-processing`](https://github.com/javiergs/edu-processing).
